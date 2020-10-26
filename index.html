@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Summon Simulator</title>
+    <link rel="stylesheet" type="text/css" href = "stylesheets/summon.css" />
+    <script src="js/rates.js"></script>
+    <script src="js/timeline.js"></script>
+    <script src="js/summon.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="flexRow" class="flex-container">
+        <div class="flexCol" id="counter" class="flex-container">
+            <p id="gems">Gems Spent: 0</p>
+            <p id="pity">Rolls Until Pity: 100</p>
+        </div>
+        <div class="flexCol" id="outer" class="flex-container">
+            <div class="dropdown">
+                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Premium Fate Weave
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" name="premium">Premium Fate Weave</a>
+                    <a class="dropdown-item" name="madoka">Release Madoka Kaname Fate Weave</a>
+                    <a class="dropdown-item" name="mami">Mami Tomoe Fate Weave</a>
+                    <a class="dropdown-item" name="diary">Ren Isuzu Fate Weave</a>
+                    <a class="dropdown-item" name="kyoko">Kyoko Sakura Fate Weave</a>
+                    <a class="dropdown-item" name="azaleas">And So, The Azaleas Bloom Fate Weave</a>
+                </div>
+            </div>
+            <div class="flexRow" class="flex-container">
+                <button class="btn shadow-none roll" id="roll1" type="button">
+                    1x Draw
+                </button>
+                <button class="btn shadow-none roll" id="roll10" type="button">
+                    10x Draw
+                </button>
+            </div>
+        </div>
+        <!-- <img src="" id="banner" /> -->
+    </div>
+    <div style="margin-top:20px;margin-bottom:25px;" class="container h-100">
+        <div class="row align-items-center h-100">
+            <div class="col-sm border" id="1"></div>
+            <div class="col-sm border" id="2"></div>
+            <div class="col-sm border" id="3"></div>
+            <div class="col-sm border" id="4"></div>
+            <div class="col-sm border" id="5"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm border" id="6"></div>
+            <div class="col-sm border" id="7"></div>
+            <div class="col-sm border" id="8"></div>
+            <div class="col-sm border" id="9"></div>
+            <div class="col-sm border" id="10"></div>
+        </div>
+    </div>
+    <!-- <div style="width:750px;margin-bottom:20px;" class="container h-100">
+        <div class="row align-items-center h-100">
+            <div style="height: 40px;" class="col-sm border">4* Magical Girls</div>
+            <div style="height: 40px;" class="col-sm border">4* Memoria</div>
+        </div>
+        <div class="row">
+            <div class="col-sm border" id="meguca"></div>
+            <div class="col-sm border" id="memoria"></div>
+        </div>
+    </div> -->
+    <table style="width:750px;" class="table table-bordered" style="margin:20px !important;">
+        <thead>
+            <tr>
+                <th style="height: 40px;" scope="col">4* Magical Girls</th>
+                <th style="height: 40px;" scope="col">4* Memorias</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="padded" id="meguca"></td>
+                <td class="padded" id="memoria"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
