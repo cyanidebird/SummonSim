@@ -110,7 +110,6 @@ function bannerChange(current)
     }
 
     populatePool(allRates[current]);
-    console.log(pool);
 
     for (rarity in categoryChance)
     {
