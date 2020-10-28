@@ -11,26 +11,18 @@ td {
     background-color: white;
 }
 
-.summon {
-    height:120px;
-    text-align: center;
-}
-
 #dropdownMenuButton {
     background-color: white;
     width:344px;
     margin: 0px 0px 15px 0px;
 }
 
-.dropdown-menu:hover {
-    display: block;
-}
-
 .col-sm {
     text-align: center;
-    height:130px;
     background-color: white;
     padding-top: 15px;
+    /* min-height:130px !important; */
+    height:130px;
 }
 
 th {

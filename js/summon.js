@@ -19,7 +19,6 @@ let memoDates = Object.keys(timelineMemo);
 let prevBanner = "";
 let pity = 0;
 let gemsSpent = 0;
-var numIMFs = 0;
 
 // holds rates for current banner for guaranteed 3*
 let threeStarRates = {star3: {}, star4:{}};
@@ -144,15 +143,15 @@ function roll10()
   }
 
   // calculate where the guaranteed 3* is
-  let threeStar = Math.floor(random(1, 10)) - 1;
+  let threeStar = getRandom(0, 9);
   do {
-    threeStar = Math.floor(random(1, 10)) - 1;
+    threeStar = getRandom(0, 9);
   } while (pity == threeStar);
 
   // // calculate where the guaranteed magical girl is
-  let meguca = Math.floor(random(1, 10)) - 1;
+  let meguca = getRandom(0, 9);
   do {
-    meguca = Math.floor(random(1, 10)) - 1;
+    meguca = getRandom(0, 9);
   } while (meguca == threeStar || meguca == pity);
 
   for (let i = 0; i < 10; i++)
@@ -428,19 +427,15 @@ function decideSpecific(item, rarity)
 {
   if (item == "Memoria")
   {
-    return pool["memorias"][rarity][Math.floor(random(1, pool["memorias"][rarity].length)) - 1];
+    return pool["memorias"][rarity][getRandom(0, pool["memorias"][rarity].length - 1)];
   }
   else if (item == "Magical Girls")
   {
-    return pool["megucas"][rarity][Math.floor(random(1, pool["megucas"][rarity].length)) - 1];
+    return pool["megucas"][rarity][getRandom(0, pool["megucas"][rarity].length - 1)];
   }
 
   return item;
 }
-
-function random(mn, mx) {  
-  return Math.random() * (mx - mn) + mn;  
-}  
 
 function roll(rates, rarity)
 {
@@ -481,4 +476,10 @@ function sumSubArrays(array){
     toReturn += array[key];
   }
   return toReturn;
+}
+
+// inclusive
+function getRandom(min, max)
+{
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
