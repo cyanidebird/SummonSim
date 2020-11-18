@@ -372,9 +372,7 @@ function getImage(item)
   }
   else
   {
-    let firstName = item.split(" ")[0];
-    let lastName = item.split(" ")[1];
-    return '<img class="pull" src="./assets/Megucas/' + lastName + '_' + firstName + '.png"/>';
+    return '<img class="pull" src="./assets/Megucas/' + item + '.png"/>';
   }
 }
 

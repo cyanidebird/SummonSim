@@ -30,7 +30,8 @@ var timelineMemo = {
                             "Unlimited Happiness to You_1045",
                             "A Brusque Savior_1046",
                             "Hope in Despair_1047",
-                            "Towards the End_1048"],
+                            "Towards the End_1048",
+                            "Daily Delusions_1124"],
                 "star3": [ "She'll Definitely Be Happy_1049",
                             "As a Fashion Model_1050",
                             "The Strongest, Even at Basketball_1051",
@@ -53,19 +54,33 @@ var timelineMemo = {
                             "Everlasting Light_1070",
                             "Sworn Promise_1071",
                             "Victory Tea_1072"]},
-    
-    "09/04/2017": {"star2": ["Napping to Your Heart's Content on a Day Off_1103"]},
+                            
+        "09/04/2017": {"star2": ["Napping to Your Heart's Content on a Day Off_1103"]},
 
-    "09/19/2017": {"star4": ["Here With You_1107"]},
+        "09/19/2017": {"star4": ["Here With You_1107"]},
 
-    "09/29/2017": {"star2": ["My School Life_1112"],
-                  "star4": ["Unwavering Belief_1113"]},
+        "09/29/2017": {"star2": ["My School Life_1112"],
+                        "star4": ["Unwavering Belief_1113"]},
 
-    "10/17/2017": {"star2": ["I'm Upside Down!_1119",
-                            "Tea for Three_1115",
-                            "What's Right Before My Eyes..._1117"],
-                    "star4": ["Dependable Negotiator_1121",
-                            "I Made Friends!_1122"]}
+        "10/17/2017": {"star2": ["I'm Upside Down!_1119",
+                                "Tea for Three_1115",
+                                "What's Right Before My Eyes..._1117"],
+                        "star4": ["Dependable Negotiator_1121",
+                                "I Made Friends!_1122"]},
+
+        "10/30/2017": {"star2": [/*"Welcoming With Treats_1132!lim"*/],
+                        "star3": [/*"The Practice Continues_1133!lim"*/,
+                                /*"Wolf for a Single Night_1131!lim"*/],
+                        "star4": ["My Bible_1130",
+                                "Recovery and Resolve_1128"]},
+
+        "11/10/2017": {"star2": ["An Ordinary Day_1136"]},
+
+        // "11/20/2017": {"star2": ["The Transfer Student Is a Returnee!_1140!lim",
+        //                         "Refreshing Shopping_1142!lim"],
+        //                 "star4": ["The Three of Us, Forward_1146!lim"]},
+
+        "11/30/2017": {"star2": ["Non-Stop Training_1151"]}
 };
 
 var timelineMeguca = {
@@ -101,10 +116,20 @@ var timelineMeguca = {
                             "Kirika Kure",
                             "Madoka Kaname"]},
 
-    "09/19/2017": {"star4": ["Ren Isuzu"]},
+        "09/19/2017": {"star4": ["Ren Isuzu"]},
 
-    "09/29/2017": {"star4": ["Kyoko Sakura"]},
+        "09/29/2017": {"star4": ["Kyoko Sakura"]},
 
-    "10/17/2017": {"star4": ["Konoha Shizumi"],
-                    "star3": ["Hazuki Yusa"]}
+        "10/17/2017": {"star4": ["Konoha Shizumi"],
+                        "star3": ["Hazuki Yusa"]},
+                    
+        "10/30/2017": {"star4": ["Karin Misono"],
+                        "star2": ["Sana Futaba"]},
+
+        "11/10/2017": {"star4": ["Kokoro Awane"]},
+
+        // "11/20/2017": {"star4": ["Kazumi!lim"],
+        //                 "star3": ["Kaoru Maki!lim"]},
+                        
+        "11/30/2017": {"star4": ["Tsukuyo Amane"]}
 };
