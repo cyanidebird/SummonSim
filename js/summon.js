@@ -202,7 +202,7 @@ function roll10()
         currChance += categoryChance[key];
         if (pullChance < currChance)
         {
-          item = roll(rates, key)
+          item = roll(rates, key);
           break;
         }
       }
@@ -313,6 +313,11 @@ function roll1()
 function setImage(item, key, i)
 {
   let color = "";
+  if (item == undefined)
+  {
+    console.log(key);
+    //error occurs for 3 stars
+  }
   if (key == "star4")
   {
     if (item.lastIndexOf("_") != -1) // memoria
@@ -425,11 +430,14 @@ function decideSpecific(item, rarity)
 {
   if (item == "Memoria")
   {
-    return pool["memorias"][rarity][getRandom(0, pool["memorias"][rarity].length - 1)];
+    let num = getRandom(0, pool["memorias"][rarity].length - 1);
+    item = pool["memorias"][rarity][num];
+    return item;
   }
   else if (item == "Magical Girls")
   {
-    return pool["megucas"][rarity][getRandom(0, pool["megucas"][rarity].length - 1)];
+    item =  pool["megucas"][rarity][getRandom(0, pool["megucas"][rarity].length - 1)];
+    return item;
   }
 
   return item;

@@ -68,19 +68,12 @@ var timelineMemo = {
                         "star4": ["Dependable Negotiator_1121",
                                 "I Made Friends!_1122"]},
 
-        "10/30/2017": {"star2": [/*"Welcoming With Treats_1132!lim"*/],
-                        "star3": [/*"The Practice Continues_1133!lim"*/,
-                                /*"Wolf for a Single Night_1131!lim"*/],
-                        "star4": ["My Bible_1130",
+        "10/30/2017": {"star4": ["My Bible_1130",
                                 "Recovery and Resolve_1128"]},
 
         "11/10/2017": {"star2": ["An Ordinary Day_1136"]},
 
-        // "11/20/2017": {"star2": ["The Transfer Student Is a Returnee!_1140!lim",
-        //                         "Refreshing Shopping_1142!lim"],
-        //                 "star4": ["The Three of Us, Forward_1146!lim"]},
-
-        "11/30/2017": {"star2": ["Non-Stop Training_1151"]}
+        "11/30/2017": {"star4": ["Non-Stop Training_1151"]}
 };
 
 var timelineMeguca = {
@@ -127,9 +120,6 @@ var timelineMeguca = {
                         "star2": ["Sana Futaba"]},
 
         "11/10/2017": {"star4": ["Kokoro Awane"]},
-
-        // "11/20/2017": {"star4": ["Kazumi!lim"],
-        //                 "star3": ["Kaoru Maki!lim"]},
                         
         "11/30/2017": {"star4": ["Tsukuyo Amane"]}
 };
