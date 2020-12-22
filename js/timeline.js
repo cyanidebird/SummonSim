@@ -30,8 +30,7 @@ var timelineMemo = {
                             "Unlimited Happiness to You_1045",
                             "A Brusque Savior_1046",
                             "Hope in Despair_1047",
-                            "Towards the End_1048",
-                            "Daily Delusions_1124"],
+                            "Towards the End_1048"],
                 "star3": [ "She'll Definitely Be Happy_1049",
                             "As a Fashion Model_1050",
                             "The Strongest, Even at Basketball_1051",
@@ -68,12 +67,25 @@ var timelineMemo = {
                         "star4": ["Dependable Negotiator_1121",
                                 "I Made Friends!_1122"]},
 
-        "10/30/2017": {"star4": ["My Bible_1130",
+        "10/30/2017": {"star2": ["Daily Delusions_1124",
+                                "After-school Invisible Girl_1126"],
+                        "star4": ["My Bible_1130",
                                 "Recovery and Resolve_1128"]},
 
         "11/10/2017": {"star2": ["An Ordinary Day_1136"]},
 
-        "11/30/2017": {"star4": ["Non-Stop Training_1151"]}
+        "11/30/2017": {"star4": ["Non-Stop Training_1151"]},
+
+        "01/22/2018": {"star2": ["A Duo's Battlefront_1166"],
+                        "star4": ["For The Ones I Love_1167"]},
+
+        "03/02/2018": {"star3": ["The Calm After the Storm_1179"],
+                        "star4": ["Attitude Toward Art_1180"]},
+
+        "03/12/2018": {"star2": ["After the Rain - Seika_1187"],
+                        "star3": ["After the Rain - Leila_1186"],
+                        "star4": ["After the Rain - Mito_1188",
+                                "Sunlight Shining Down_1190"]}
 };
 
 var timelineMeguca = {
@@ -96,7 +108,6 @@ var timelineMeguca = {
                             "Masara Kagami",
                             "Yuma Chitose",
                             "Rika Ayano",
-                            "Aimi Eri",
                             "Nanaka Tokiwa",
                             "Asuka Tatsuki",
                             "Oriko Mikuni",
@@ -117,9 +128,17 @@ var timelineMeguca = {
                         "star3": ["Hazuki Yusa"]},
                     
         "10/30/2017": {"star4": ["Karin Misono"],
+                        "star3": ["Aimi Eri"],
                         "star2": ["Sana Futaba"]},
 
         "11/10/2017": {"star4": ["Kokoro Awane"]},
                         
-        "11/30/2017": {"star4": ["Tsukuyo Amane"]}
+        "11/30/2017": {"star4": ["Tsukuyo Amane"]},
+
+        "01/22/2018": {"star4": ["Sayaka Miki"]},
+
+        "03/02/2018": {"star4": ["Alina Gray"]},
+
+        "03/12/2018": {"star4": ["Mito Aino"],
+                        "star3": ["Leila Ibuki"]}
 };

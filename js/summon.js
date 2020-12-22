@@ -128,6 +128,8 @@ function bannerChange(current)
       }
     }
   }
+
+  //console.log(allRates[current]);
 }
 
 function roll10()

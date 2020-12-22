@@ -188,3 +188,130 @@ allRates["holymami"] = {
         "Holy Mami": 0
     }
 };
+
+allRates["haregidoka"] = {
+    JP: "1/1/2018",
+    star2: {
+    },
+    star3: {
+        "Prided Haregi_1162": 0
+    },
+    star4:{
+        "For This Fine Day_1160": 0,
+        "Going Out in a Kimono_1161": 0,
+        "Madoka Kaname (Haregi ver.)": 0
+    }
+};
+
+allRates["sayaka"] = {
+    JP: "1/22/2018",
+    star2: {
+        "Just a Small Bite!_1022": 0,
+        "A Duo's Battlefront_1166": 0
+    },
+    star3: {
+    },
+    star4:{
+        "For The Ones I Love_1167": 0,
+        "Sayaka Miki": 0
+    }
+};
+
+allRates["sayaka"] = {
+    JP: "1/22/2018",
+    star2: {
+        "Just a Small Bite!_1022": 0,
+        "A Duo's Battlefront_1166": 0
+    },
+    star3: {
+    },
+    star4:{
+        "For The Ones I Love_1167": 0,
+        "Sayaka Miki": 0
+    }
+};
+
+allRates["valen1"] = {
+    JP: "2/5/2018",
+    star2: {
+    },
+    star3: {
+        "My First Homemade Chocolate_1169": 0
+    },
+    star4:{
+        "Let Your Feelings Fly!_1168": 0,
+        "Madoka Kaname": 0,
+        "Sayaka Miki": 0
+    }
+};
+
+allRates["valen2"] = {
+    JP: "2/5/2018",
+    star2: {
+        "Sana Futaba": 0
+    },
+    star3: {
+        "My First Homemade Chocolate_1169": 0
+    },
+    star4:{
+        "Let Your Feelings Fly!_1168": 0,
+        "Momoko Togame": 0,
+        "Ren Isuzu": 0
+    }
+};
+
+allRates["tart"] = {
+    JP: "02/15/2018",
+    star2: {
+        "The Maiden's Resolve_1171": 0
+    },
+    star3: {
+    },
+    star4:{
+        "Reinforcements from Another Time_1177": 0,
+        "Tart": 0
+    }
+};
+
+allRates["liz"] = {
+    JP: "02/15/2018",
+    star2: {
+        "The Light and Its Shadow_1173": 0
+    },
+    star3: {
+    },
+    star4:{
+        "The Third Magical Girl_1176": 0,
+        "Liz Hawkwood": 0
+    }
+};
+
+allRates["alina"] = {
+    JP: "02/15/2018",
+    star2: {
+    },
+    star3: {
+        "The Calm After the Storm_1179": 0
+    },
+    star4:{
+        "My Bible_1130": 0,
+        "Attitude Toward Art_1180": 0,
+        "Alina Gray": 0
+    }
+};
+
+allRates["apartment"] = {
+    JP: "03/12/2018",
+    star2: {
+        "After the Rain - Seika_1187": 0
+    },
+    star3: {
+        "After the Rain - Leila_1186": 0,
+        "Leila Ibuki": 0
+    },
+    star4:{
+        "After the Rain - Mito_1188": 0,
+        "Sunlight Shining Down_1190": 0,
+        "Mito Aino": 0
+    }
+};
