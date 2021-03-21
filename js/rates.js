@@ -315,3 +315,110 @@ allRates["apartment"] = {
         "Mito Aino": 0
     }
 };
+
+allRates["mayu"] = {
+    JP: "03/23/2018",
+    star2: {
+    },
+    star3: {
+        "Part-timing at the Art Gallery_1193": 0,
+    },
+    star4:{
+        "I Can Be Serious When I Want_1192": 0,
+        "Mayu Kozue": 0
+    }
+};
+
+allRates["himika"] = {
+    JP: "04/02/2018",
+    star2: {
+    },
+    star3: {
+        "The Mao Family Is Lively Today As Well_1195": 0,
+    },
+    star4:{
+        "Starlight Power!_1196": 0,
+        "Himika Mao": 0
+    }
+};
+
+allRates["mitama"] = {
+    JP: "04/13/2018",
+    star2: {
+    },
+    star3: {
+        "The Destination of Shizuku's Travel Is!?_1199": 0,
+    },
+    star4:{
+        "My True Nature_1200": 0,
+        "Mitama Yakumo": 0
+    }
+};
+
+allRates["suzune"] = {
+    JP: "05/01/2018",
+    star2: {
+    },
+    star3: {
+        "The Hand Chisato Held_1208": 0,
+        "Chisato Shion": 0
+    },
+    star4:{
+        "A Sword Between Light and Dark_1209": 0,
+        "Suzune Amano": 0
+    }
+};
+
+allRates["voices"] = {
+    JP: "05/21/2018",
+    star2: {
+    },
+    star3: {
+        "Now the Two of Us Watch Over_1216": 0,
+        "Mel Anna": 0
+    },
+    star4:{
+        "A Gentle Breeze_1215": 0,
+        "Kanae Yukino": 0
+    }
+};
+
+allRates["tsurumor"] = {
+    JP: "06/01/2018",
+    star2: {
+    },
+    star3: {
+        "Our Misunderstanding_1219": 0,
+        "Rumor Tsuruno": 0
+    },
+    star4:{
+        "Fuuuusion!!_1218": 0
+    }
+};
+
+allRates["mifuyu"] = {
+    JP: "06/08/2018",
+    star2: {
+        "Tension Between the East and West_1223": 0
+    },
+    star3: {
+        "Reason For Involvement_1222": 0,
+    },
+    star4:{
+        "Cloaked in Guilt_1221": 0,
+        "Mifuyu Azusa": 0
+    }
+};
+
+allRates["kanagi"] = {
+    JP: "06/25/2018",
+    star2: {
+    },
+    star3: {
+        "Leave it to Nagi-tan_1231": 0,
+    },
+    star4:{
+        "An Uncrossable Gap_1229": 0,
+        "Kanagi Izumi": 0
+    }
+};

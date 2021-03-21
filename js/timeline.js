@@ -85,7 +85,26 @@ var timelineMemo = {
         "03/12/2018": {"star2": ["After the Rain - Seika_1187"],
                         "star3": ["After the Rain - Leila_1186"],
                         "star4": ["After the Rain - Mito_1188",
-                                "Sunlight Shining Down_1190"]}
+                                "Sunlight Shining Down_1190"]},
+        
+        "03/23/2018": {"star3": ["Part-timing at the Art Gallery_1193"],
+                        "star4": ["I Can Be Serious When I Want_1192"]},
+
+        "04/02/2018": {"star3": ["The Mao Family Is Lively Today As Well_1195"],
+                        "star4": ["Starlight Power!_1196"]},
+
+        "04/13/2018": {"star3": ["The Destination of Shizuku's Travel Is!?_1199"],
+                        "star4": ["My True Nature_1200"]},
+
+        "05/21/2018": {"star3": ["Now the Two of Us Watch Over_1216"],
+                        "star4": ["A Gentle Breeze_1215"]},
+
+        "06/08/2018": {"star2": ["Tension Between the East and West_1223"],
+                        "star3": ["Reason For Involvement_1222"],
+                        "star4": ["Cloaked in Guilt_1221"]},
+
+        "06/25/2018": {"star3": ["Leave it to Nagi-tan_1231"],
+                        "star4": ["An Uncrossable Gap_1229"]}
 };
 
 var timelineMeguca = {
@@ -140,5 +159,18 @@ var timelineMeguca = {
         "03/02/2018": {"star4": ["Alina Gray"]},
 
         "03/12/2018": {"star4": ["Mito Aino"],
-                        "star3": ["Leila Ibuki"]}
+                        "star3": ["Leila Ibuki"]},
+
+        "03/23/2018": {"star4": ["Mayu Kozue"]},
+
+        "04/02/2018": {"star4": ["Himika Mao"]},
+
+        "04/13/2018": {"star4": ["Mitama Yakumo"]},
+
+        "05/21/2018": {"star4": ["Kanae Yukino"],
+                        "star3": ["Mel Anna"]},
+
+        "06/08/2018": {"star4": ["Mifuyu Azusa"]},
+
+        "06/25/2018": {"star4": ["Kanagi Izumi"]}
 };

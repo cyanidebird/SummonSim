@@ -84,18 +84,28 @@ function bannerChange(current)
     {
       let numMemoria = 0;
       let numMegucas = 0;
-      if (rarity != 'JP' && rarity != 'Name')
+      if (rarity != 'JP')
       {
         for (item in allRates[current][rarity])
         {
           isMemoria(item) ? numMemoria++ : numMegucas++;
         }
 
+        let one4StarMemo = false;
+
         for (item in allRates[current][rarity])
         {
           if (isMemoria(item))
           {
-            allRates[current][rarity][item] = generalRates[rarity]["Memoria"]["Total"] * generalRates[rarity]["Memoria"]["Rarity"] / numMemoria;
+            if (rarity == "star4" && numMemoria == 1)
+            {
+              allRates[current][rarity][item] = 150;
+              one4StarMemo = true;
+            }
+            else
+            {
+              allRates[current][rarity][item] = generalRates[rarity]["Memoria"]["Total"] * generalRates[rarity]["Memoria"]["Rarity"] / numMemoria;
+            }
           }
           else
           {
@@ -103,7 +113,7 @@ function bannerChange(current)
           }
         }
 
-        allRates[current][rarity]["Memoria"] =  generalRates[rarity]["Memoria"]["Total"] -  generalRates[rarity]["Memoria"]["Total"] * generalRates[rarity]["Memoria"]["Rarity"];
+        allRates[current][rarity]["Memoria"] = one4StarMemo ? 250 : generalRates[rarity]["Memoria"]["Total"] -  generalRates[rarity]["Memoria"]["Total"] * generalRates[rarity]["Memoria"]["Rarity"];
         allRates[current][rarity]["Magical Girls"] =  generalRates[rarity]["Magical Girls"]["Total"] -  generalRates[rarity]["Magical Girls"]["Total"] * generalRates[rarity]["Magical Girls"]["Rarity"];
       }
     }
@@ -123,13 +133,13 @@ function bannerChange(current)
         else // memoria
         {
           if (rarity != "star2")
+          {
             threeStarRates[rarity][item] = markupThreeStar[rarity]["Memoria"] * allRates[current][rarity][item];
+          }
         }
       }
     }
   }
-
-  //console.log(allRates[current]);
 }
 
 function roll10()
@@ -146,15 +156,15 @@ function roll10()
 
   // calculate where the guaranteed 3* is
   let threeStar = getRandom(0, 9);
-  do {
-    threeStar = getRandom(0, 9);
-  } while (pity == threeStar);
+  // do {
+  //   threeStar = getRandom(0, 9);
+  // } while (pity == threeStar);
 
   // // calculate where the guaranteed magical girl is
   let meguca = getRandom(0, 9);
   do {
     meguca = getRandom(0, 9);
-  } while (meguca == threeStar || meguca == pity);
+  } while (meguca == threeStar);
 
   for (let i = 0; i < 10; i++)
   {
