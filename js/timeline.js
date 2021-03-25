@@ -79,6 +79,9 @@ var timelineMemo = {
         "01/22/2018": {"star2": ["A Duo's Battlefront_1166"],
                         "star4": ["For The Ones I Love_1167"]},
 
+        "02/22/2018": {"star3": ["All Eyes On Me_1202"],
+                        "star4": ["Ryushin-Ryu Assistant Instructor_1203"]},
+
         "03/02/2018": {"star3": ["The Calm After the Storm_1179"],
                         "star4": ["Attitude Toward Art_1180"]},
 
@@ -155,6 +158,8 @@ var timelineMeguca = {
         "11/30/2017": {"star4": ["Tsukuyo Amane"]},
 
         "01/22/2018": {"star4": ["Sayaka Miki"]},
+
+        "02/22/2018": {"star3": ["Ria Ami"]},
 
         "03/02/2018": {"star4": ["Alina Gray"]},
 

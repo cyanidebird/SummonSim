@@ -274,7 +274,7 @@ allRates["tart"] = {
 };
 
 allRates["liz"] = {
-    JP: "02/15/2018",
+    JP: "02/21/2018",
     star2: {
         "The Light and Its Shadow_1173": 0
     },
@@ -286,8 +286,22 @@ allRates["liz"] = {
     }
 };
 
+allRates["kyokoria"] = {
+    JP: "02/22/2018",
+    star2: {
+    },
+    star3: {
+        "All Eyes On Me_1202": 0,
+        "Ria Ami": 0
+    },
+    star4:{
+        "Ryushin-Ryu Assistant Instructor_1203": 0,
+        "Kyoko Sakura": 0
+    }
+};
+
 allRates["alina"] = {
-    JP: "02/15/2018",
+    JP: "03/02/2018",
     star2: {
     },
     star3: {

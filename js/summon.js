@@ -140,6 +140,9 @@ function bannerChange(current)
       }
     }
   }
+
+  console.log(allRates[current]);
+  console.log(threeStarRates);
 }
 
 function roll10()
