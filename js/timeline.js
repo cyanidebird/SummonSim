@@ -107,7 +107,15 @@ var timelineMemo = {
                         "star4": ["Cloaked in Guilt_1221"]},
 
         "06/25/2018": {"star3": ["Leave it to Nagi-tan_1231"],
-                        "star4": ["An Uncrossable Gap_1229"]}
+                        "star4": ["An Uncrossable Gap_1229"]},
+
+        "09/10/2018": {"star4": ["To Continue Living in This World_1254"]},
+
+        "09/18/2018": {"star4": ["The Power to Protect Who You Love_1255"]},
+
+        "10/09/2018": {"star2": ["Inherited Bonds_1266"],
+                        "star3": ["Popular in the Artisan Ward_1265"],
+                        "star4": ["Garnish Everything Cutely!_1264"]}
 };
 
 var timelineMeguca = {
@@ -177,5 +185,7 @@ var timelineMeguca = {
 
         "06/08/2018": {"star4": ["Mifuyu Azusa"]},
 
-        "06/25/2018": {"star4": ["Kanagi Izumi"]}
+        "06/25/2018": {"star4": ["Kanagi Izumi"]},
+
+        "10/09/2018": {"star4": ["Riko Chiaki"]}
 };

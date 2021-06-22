@@ -19,15 +19,281 @@
 <body>
     <div class="flexRow" class="flex-container">
         <div class="flexCol" id="counter" class="flex-container">
-            <p id="gems">Gems Spent: 0</p>
-            <p id="pity">Rolls Until Pity: 100</p>
+            <div class="container">
+                <img src="./assets/spent.svg" style="width:100%">
+                <p id="rolls">0</p>
+            </div>
+            <div class="container">
+                <img src="./assets/pity.svg" style="width:100%">
+                <p id="pity">0/100</p>
+            </div>
         </div>
         <div class="flexCol" id="outer" class="flex-container">
-            <div class="dropdown">
+            <button type="button" class="btn btn-outline-primary" id="dropdownMenuButton" data-toggle="modal" data-target=".bd-example-modal-lg">Select Fate Weave</button>
+            <div id="modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" >
+                <div class="modal-content" id="modal">
+                    <ul class="nav nav-tabs justify-content-center" id="tabContent">
+                        <li class="active nav-item">
+                            <a class="nav-link" href="#eighteen" data-toggle="tab">2018</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#seventeen" data-toggle="tab">2017</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#misc" data-toggle="tab">Misc</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="eighteen">
+                            <div class="container-fluid">
+                                <div class="row row-modal">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="riko" src="./assets/banners/riko.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="nadeko" src="./assets/banners/nadeko.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="masakoko2" src="./assets/banners/masakoko.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-modal">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="ren2" src="./assets/banners/ren.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="madokami" src="./assets/banners/madokami.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="searoha" src="./assets/banners/searoha.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-modal">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="swimmura" src="./assets/banners/swimhomu.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="kanagi" src="./assets/banners/kanagi.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="mifuyu" src="./assets/banners/mifuyu.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-modal">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="tsurumor" src="./assets/banners/tsurumor.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="voices" src="./assets/banners/voices.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="suzune" src="./assets/banners/suzune.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-modal">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="mitama" src="./assets/banners/mitama.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="himika" src="./assets/banners/himika.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="mayu" src="./assets/banners/mayu.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-modal">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="apartment" src="./assets/banners/apartment.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="alina" src="./assets/banners/alina.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="kyokoria" src="./assets/banners/kyokoria.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-modal">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="liz" src="./assets/banners/liz.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="tart" src="./assets/banners/tart.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="valen2" src="./assets/banners/valen2.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-modal">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="valen1" src="./assets/banners/valen1.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="sayaka" src="./assets/banners/sayaka.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="haregidoka" src="./assets/banners/haregidoka.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="seventeen">
+                            <div class="container-fluid">
+                                <div class="row row-modal">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="holymami" src="./assets/banners/homami.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="kirika" src="./assets/banners/kirika.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner checkmark" name="tsukuyo" src="./assets/banners/tsukuyo.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-modal">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="anotherdaze" src="./assets/banners/anotherdaze.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="kokoro" src="./assets/banners/masakoko.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="karin" src="./assets/banners/karin.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-modal">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="rena" src="./assets/banners/rena.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="azaleas" src="./assets/banners/azaleas.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="kyoko" src="./assets/banners/kyoko.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-modal">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="diary" src="./assets/banners/ren.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="mami" src="./assets/banners/mami.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="madoka" src="./assets/banners/release.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="tab-pane" id="misc">
+                            <div class="container-fluid">
+                                <div class="row row-modal">
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="support" src="./assets/banners/support.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail">
+                                            <img class="banner" name="premium" src="./assets/banners/premium.png" style="width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="modal-footer">
+                        <button id="save" type="button" class="btn btn-primary">Save Changes</button>
+                        <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">Quit</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- <div class="dropdown">
                 <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Premium Fate Weave
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" name="riko">Riko Chiaki Fate Weave</a>
+                    <a class="dropdown-item" name="nadeko">Nadeko Sengoku Fate Weave</a>
+                    <a class="dropdown-item" name="masakoko2">Kokoro & Masara Fate Weave</a>
+                    <a class="dropdown-item" name="ren2">Ren Isuzu Fate Weave</a>
+                    <a class="dropdown-item" name="madokami">Ultimate Madoka Fate Weave</a>
+                    <a class="dropdown-item" name="searoha">Summer With Mikazuki Villa Fate Weave</a>
+                    <a class="dropdown-item" name="swimmura">The Ribbon at the Beach Fate Weave</a>
                     <a class="dropdown-item" name="kanagi">Kanagi Izumi Fate Weave</a>
                     <a class="dropdown-item" name="mifuyu">Mifuyu Azusa Fate Weave</a>
                     <a class="dropdown-item" name="tsurumor">Rumor Tsuruno Fate Weave</a>
@@ -57,9 +323,10 @@
                     <a class="dropdown-item" name="diary">Ren Isuzu Fate Weave</a>
                     <a class="dropdown-item" name="mami">Mami Tomoe Fate Weave</a>
                     <a class="dropdown-item" name="madoka">Release Madoka Kaname Fate Weave</a>
+                    <a class="dropdown-item" name="support">Support Point Fate Weave</a>
                     <a class="dropdown-item" name="premium">Premium Fate Weave</a>
                 </div>
-            </div>
+            </div> -->
             <div class="flexRow" class="flex-container">
                 <button class="btn shadow-none roll" id="roll1" type="button">
                     1x Draw

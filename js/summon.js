@@ -4,9 +4,25 @@ var categoryChance = {
   star4: 500
 }
 
+var categoryChanceSupport = {
+  gem_L: 550,
+  gem_M: 1000,
+  gem_S: 2000,
+  star1: 4407,
+  star2: 1542,
+  star3: 98,
+  personals: 288,
+  star4: 115
+}
+
 var pool = {
   "megucas": {"star2": [], "star3": [], "star4": []},
   "memorias": {"star2": [], "star3": [], "star4": []}
+};
+
+var supportPool = {
+  "memorias": {"star2": [], "star3": [], "personals": [], "star4": []},
+  "gems": {"gem_L": [], "gem_M": [], "gem_S": []}
 };
 
 var rares = {
@@ -17,8 +33,12 @@ var rares = {
 let megucaDates = Object.keys(timelineMeguca);
 let memoDates = Object.keys(timelineMemo);
 let prevBanner = "";
+let selectedBanner = "";
+let prevSelectedBanner = "";
 let pity = 0;
-let gemsSpent = 0;
+let rollsSpent = 0;
+let rollsLeftSpacer = 85;
+let oldDigitCount = 1;
 
 // holds rates for current banner for guaranteed 3*
 let threeStarRates = {star3: {}, star4:{}};
@@ -33,24 +53,150 @@ megucaDates.sort( function(a, b) {return new Date(a) > new Date(b)});
 memoDates.sort( function(a, b) {return new Date(a) > new Date(b)});
 
 document.addEventListener("DOMContentLoaded", function(e) {
-  bannerChange("premium");
+  // bannerChange("premium");
 
-  $('.dropdown-menu a').click(function () {           
-    $('#dropdownMenuButton').text($(this).text());
-    bannerChange($(this).attr('name'));
-  });  
+  // $('.dropdown-menu a').click(function () {           
+  //   $('#dropdownMenuButton').text($(this).text());
+  //   bannerChange($(this).attr('name'));
+  // });
 
-  var ten = document.getElementById("roll10");
-  ten.addEventListener("click", function() {
-      roll10();
+  $('.nav-tabs a[href="#eighteen"]').tab('show');
+
+  selectedBanner = localStorage.getItem("banner");
+  if (selectedBanner)
+  {
+    prevSelectedBanner = selectedBanner;
+    bannerChange(selectedBanner);
+    $('#dropdownMenuButton').html(allRates[selectedBanner]["name"]);
+    $('img[name="'+selectedBanner+'"]').addClass('opClass');
+  }
+
+  $('#roll10').click(function() {
+    selectedBanner ? roll10() : alert("Select a banner!");
   });
 
-  var single = document.getElementById("roll1");
-  single.addEventListener("click", function() {
-      roll1();
+  $('#roll1').click(function() {
+    selectedBanner ? roll1() : alert("Select a banner!");
+  });
+
+  $('.banner').click(function () {
+    $('.banner').removeClass('opClass');
+    if (selectedBanner != $(this).attr('name'))
+    {
+      $(this).addClass('opClass');
+      selectedBanner = $(this).attr('name');
+    }
+    else
+    {
+      selectedBanner = "";
+    }
+  });
+
+  $('#save').click(function() {
+    if (selectedBanner)
+    {
+      bannerChange(selectedBanner);
+      $('#dropdownMenuButton').html(allRates[selectedBanner]["name"]);
+
+      if (selectedBanner == "support")
+      {
+        document.getElementById("rolls").innerHTML = 0;
+        rollsSpent = 0;
+        document.getElementById("pity").innerHTML = "0/100";
+        pity = 0;
+        rollsLeftSpacer = 85;
+        oldDigitCount = 1;
+        document.getElementById("rolls").style.left = rollsLeftSpacer + "%";
+        document.getElementById("pity").style.left = "73%";
+      }
+      else if (prevSelectedBanner == "support")
+      {
+        document.getElementById("rolls").innerHTML = 0;
+        rollsSpent = 0;
+        rollsLeftSpacer = 85;
+        oldDigitCount = 1;
+        document.getElementById("rolls").style.left = rollsLeftSpacer + "%";
+        document.getElementById("pity").style.left = "73%";
+      }
+    }
+    else
+    {
+      $('#dropdownMenuButton').html("Select Fate Weave");
+    }
+    $('#modal').modal('hide');
+    prevSelectedBanner = selectedBanner;
+    localStorage.setItem("banner", selectedBanner);
+  });
+
+  $('#close').click(function() {
+  
+    if (prevSelectedBanner != selectedBanner)
+    {
+      $('img[name="'+prevSelectedBanner+'"]').addClass('opClass');
+      $('img[name="'+selectedBanner+'"]').removeClass('opClass');
+      selectedBanner = prevSelectedBanner;
+    }
+    
   });
 
 });
+
+function populateSupport()
+{
+  let supportPool = {
+    "memorias": {"star1": [], "star2": [], "star3": [], "personals": [], "star4": []},
+    "gems": {"gem_L": [], "gem_M": [], "gem_S": []}
+  };
+
+  rates = allRates["support"];
+  for (let i = 0; i < memoDates.length; i++)
+  {
+    let key = memoDates[i];
+    for (let rarity in timelineMemo[key])
+    {
+      if (rarity in timelineMemo[key])
+      {
+        for (let i = 0; i < timelineMemo[key][rarity].length; i++)
+        {
+          supportPool["memorias"][rarity].push(timelineMemo[key][rarity][i]);
+          rates[rarity][timelineMemo[key][rarity][i]] = 0;
+        }
+      }
+    }
+  }
+
+  let needToFillGems = ["gem_L", "gem_M", "gem_S"];
+  let needToFillMemos = ["personals", "star1"];
+
+  for (category of needToFillGems)
+  {
+    for (item in rates[category])
+    {
+      supportPool["gems"][category].push(item);
+    }
+  }
+
+  for (category of needToFillMemos)
+  {
+    for (item in rates[category])
+    {
+      supportPool["memorias"][category].push(item);
+    }
+  }
+
+  for (category in supportPool)
+  {
+    for (rarity in supportPool[category])
+    {
+      for (let i = 0; i < supportPool[category][rarity].length; i++)
+      {
+        let item = supportPool[category][rarity][i]
+        rates[rarity][item] = categoryChanceSupport[rarity] / supportPool[category][rarity].length;
+      }
+    }
+  }
+
+}
 
 function bannerChange(current)
 {
@@ -60,81 +206,90 @@ function bannerChange(current)
     // var banner = document.getElementById("banner");
     // banner.src = "./assets/Banners/" + current + ".png";
 
-    pity = 0;
-    document.getElementById("pity").innerHTML = "Rolls Until Pity: 100";
-
-    pool = {
-      "megucas": {"star2": [], "star3": [], "star4": []},
-      "memorias": {"star2": [], "star3": [], "star4": []}
-    };
-    
-    let markupMeguca = {"star2": 85/25.5, "star3": 3.5, "star4": 1};
-    let markupThreeStar = {"star3": {"Magical Girls": 5, "Memoria": 5},
-                          "star4": {"Magical Girls": 2, "Memoria": 4.5}};
-
-    threeStarRates = {"star3": {}, "star4":{}};
-    megucaRates = {"star2": {}, "star3": {}, "star4":{}};
-
-    let generalRates = {"star2": {"Magical Girls": {"Total": 2550, "Rarity": 0.6}, "Memoria": {"Total": 5350, "Rarity": 910/5350}},
-                    "star3": {"Magical Girls": {"Total": 400, "Rarity": 0.6}, "Memoria": {"Total": 1220, "Rarity": 300/1220}},
-                    "star4": {"Magical Girls": {"Total": 100, "Rarity": 0.6}, "Memoria": {"Total": 400, "Rarity": 0.5}}}
-                    
-    // calculate odds for rates
-    for (rarity in allRates[current])
+    if (current == "support")
     {
-      let numMemoria = 0;
-      let numMegucas = 0;
-      if (rarity != 'JP')
+      populateSupport();
+    }
+    else
+    {
+      pity = 0;
+      document.getElementById("pity").innerHTML = "0/100";
+
+      pool = {
+        "megucas": {"star2": [], "star3": [], "star4": []},
+        "memorias": {"star2": [], "star3": [], "star4": []}
+      };
+      
+      let markupMeguca = {"star2": 85/25.5, "star3": 3.5, "star4": 1};
+      let markupThreeStar = {"star3": {"Magical Girls": 5, "Memoria": 5},
+                            "star4": {"Magical Girls": 2, "Memoria": 4.5}};
+
+      threeStarRates = {"star3": {}, "star4":{}};
+      megucaRates = {"star2": {}, "star3": {}, "star4":{}};
+
+      let generalRates = {"star2": {"Magical Girls": {"Total": 2550, "Rarity": 0.6}, "Memoria": {"Total": 5350, "Rarity": 910/5350}},
+                      "star3": {"Magical Girls": {"Total": 400, "Rarity": 0.6}, "Memoria": {"Total": 1200, "Rarity": 0.25}},
+                      "star4": {"Magical Girls": {"Total": 100, "Rarity": 0.6}, "Memoria": {"Total": 400, "Rarity": 0.5}}}
+                      
+      // calculate odds for rates
+      for (rarity in allRates[current])
       {
-        for (item in allRates[current][rarity])
+        let numMemoria = 0;
+        let numMegucas = 0;
+        if (rarity != 'JP' && rarity != 'name')
         {
-          isMemoria(item) ? numMemoria++ : numMegucas++;
-        }
-
-        let one4StarMemo = false;
-
-        for (item in allRates[current][rarity])
-        {
-          if (isMemoria(item))
+          for (item in allRates[current][rarity])
           {
-            if (rarity == "star4" && numMemoria == 1)
+            isMemoria(item) ? numMemoria++ : numMegucas++;
+          }
+
+          let one4StarMemo = false;
+
+          for (item in allRates[current][rarity])
+          {
+            if (isMemoria(item))
             {
-              allRates[current][rarity][item] = 150;
-              one4StarMemo = true;
+              if (rarity == "star4" && numMemoria == 1)
+              {
+                allRates[current][rarity][item] = 150;
+                one4StarMemo = true;
+              }
+              else
+              {
+                allRates[current][rarity][item] = generalRates[rarity]["Memoria"]["Total"] * generalRates[rarity]["Memoria"]["Rarity"] / numMemoria;
+              }
             }
             else
             {
-              allRates[current][rarity][item] = generalRates[rarity]["Memoria"]["Total"] * generalRates[rarity]["Memoria"]["Rarity"] / numMemoria;
+              allRates[current][rarity][item] = generalRates[rarity]["Magical Girls"]["Total"] * generalRates[rarity]["Magical Girls"]["Rarity"] / numMegucas;
             }
           }
-          else
-          {
-            allRates[current][rarity][item] = generalRates[rarity]["Magical Girls"]["Total"] * generalRates[rarity]["Magical Girls"]["Rarity"] / numMegucas;
-          }
-        }
 
-        allRates[current][rarity]["Memoria"] = one4StarMemo ? 250 : generalRates[rarity]["Memoria"]["Total"] -  generalRates[rarity]["Memoria"]["Total"] * generalRates[rarity]["Memoria"]["Rarity"];
-        allRates[current][rarity]["Magical Girls"] =  generalRates[rarity]["Magical Girls"]["Total"] -  generalRates[rarity]["Magical Girls"]["Total"] * generalRates[rarity]["Magical Girls"]["Rarity"];
+          let isThereRateUpMemo = numMemoria == 0 ? 0 : 1;
+          let isThereRateUpMeguca = numMegucas == 0 ? 0 : 1;
+          allRates[current][rarity]["Memoria"] = one4StarMemo ? 250 : generalRates[rarity]["Memoria"]["Total"] -  isThereRateUpMemo * generalRates[rarity]["Memoria"]["Total"] * generalRates[rarity]["Memoria"]["Rarity"];
+          allRates[current][rarity]["Magical Girls"] =  generalRates[rarity]["Magical Girls"]["Total"] -  isThereRateUpMeguca * generalRates[rarity]["Magical Girls"]["Total"] * generalRates[rarity]["Magical Girls"]["Rarity"];
+        }
       }
-    }
 
-    populatePool(allRates[current]);
+      populatePool(allRates[current]);
 
-    for (rarity in categoryChance)
-    {
-      for (item in allRates[current][rarity])
+      for (rarity in categoryChance)
       {
-        if (item.lastIndexOf("_") == -1 && item != "Memoria") // magical girl
+        for (item in allRates[current][rarity])
         {
-          megucaRates[rarity][item] = markupMeguca[rarity] * allRates[current][rarity][item];
-          if (rarity != "star2")
-            threeStarRates[rarity][item] = markupThreeStar[rarity]["Magical Girls"] * allRates[current][rarity][item];
-        }
-        else // memoria
-        {
-          if (rarity != "star2")
+          if (item.lastIndexOf("_") == -1 && item != "Memoria") // magical girl
           {
-            threeStarRates[rarity][item] = markupThreeStar[rarity]["Memoria"] * allRates[current][rarity][item];
+            megucaRates[rarity][item] = markupMeguca[rarity] * allRates[current][rarity][item];
+            if (rarity != "star2")
+              threeStarRates[rarity][item] = markupThreeStar[rarity]["Magical Girls"] * allRates[current][rarity][item];
+          }
+          else // memoria
+          {
+            if (rarity != "star2")
+            {
+              threeStarRates[rarity][item] = markupThreeStar[rarity]["Memoria"] * allRates[current][rarity][item];
+            }
           }
         }
       }
@@ -142,33 +297,122 @@ function bannerChange(current)
   }
 
   console.log(allRates[current]);
-  console.log(threeStarRates);
 }
 
 function roll10()
 {
-  let rates = allRates[prevBanner];
-  gemsSpent += 250;
-  // calculate where pity is
-  // if you get a 4* before then, remove it
-  let fourStar = -1;
-  if (pity >= 90)
+  if (prevBanner == "support")
   {
-    fourStar = 100 - pity - 1;
+    roll10Support();
   }
+  else
+  {
+    let rates = allRates[prevBanner];
+    rollsSpent += 10;
+    // calculate where pity is
+    // if you get a 4* before then, remove it
+    let fourStar = -1;
+    if (pity >= 90)
+    {
+      fourStar = 100 - pity - 1;
+    }
 
-  // calculate where the guaranteed 3* is
-  let threeStar = getRandom(0, 9);
-  // do {
-  //   threeStar = getRandom(0, 9);
-  // } while (pity == threeStar);
+    // calculate where the guaranteed 3* is
+    let threeStar = getRandom(0, 9);
+    // do {
+    //   threeStar = getRandom(0, 9);
+    // } while (pity == threeStar);
 
-  // // calculate where the guaranteed magical girl is
-  let meguca = getRandom(0, 9);
-  do {
-    meguca = getRandom(0, 9);
-  } while (meguca == threeStar);
+    // // calculate where the guaranteed magical girl is
+    let meguca = getRandom(0, 9);
+    do {
+      meguca = getRandom(0, 9);
+    } while (meguca == threeStar);
 
+    for (let i = 0; i < 10; i++)
+    {
+      let pullChance = (Math.random() * 10000);
+      let currChance = 0;
+      let rarity = 0;
+      let item;
+
+      if (i == fourStar)
+      {
+        rarity = "star4";
+        item = roll(megucaRates, "star4");
+      }
+      else if (i == threeStar)
+      {
+        let threeStarCategories =  {star3: 8000, star4: 2000};
+        for (let key in threeStarCategories)
+        {
+          rarity = key;
+          currChance += threeStarCategories[key];
+          if (pullChance < currChance)
+          {
+            item = roll(threeStarRates, key)
+            break;
+          }
+        }
+      }
+      else if (i == meguca)
+      {
+        let megucaCategories =  {star2: 8500, star3: 1400, star4: 100};
+        for (let key in megucaCategories)
+        {
+          rarity = key;
+          currChance += megucaCategories[key];
+          if (pullChance < currChance)
+          {
+            item = roll(megucaRates, key)
+            break;
+          }
+        }
+      }
+      else
+      {
+        for (let key in categoryChance)
+        {
+          rarity = key;
+          currChance += categoryChance[key];
+          if (pullChance < currChance)
+          {
+            item = roll(rates, key);
+            break;
+          }
+        }
+      }
+
+      item = decideSpecific(item, rarity);
+      pity++;
+
+      if (rarity == "star4" && item.lastIndexOf("_") == -1 && item.trim() != "Memoria") // 4* girl
+      {
+        pity = 0;
+        fourStar = -1;
+      }
+
+      setImage(item, rarity, i);
+      updateValues();
+
+      for (key in rares["magical girls"])
+      {
+        document.getElementById("meguca").innerHTML += key + " x" + rares["magical girls"][key] + "<br>";
+      }
+
+      for (key in rares["memorias"])
+      {
+        document.getElementById("memoria").innerHTML += key + " x" + rares["memorias"][key] + "<br>";
+      }
+    }
+  }
+}
+
+function roll10Support()
+{
+  let rates = allRates["support"];
+  rollsSpent += 10;
+    
   for (let i = 0; i < 10; i++)
   {
     let pullChance = (Math.random() * 10000);
@@ -176,163 +420,146 @@ function roll10()
     let rarity = 0;
     let item;
 
-    if (i == fourStar)
+    for (let key in categoryChanceSupport)
     {
-      rarity = "star4";
-      item = roll(megucaRates, "star4");
-    }
-    else if (i == threeStar)
-    {
-      let threeStarCategories =  {star3: 8000, star4: 2000};
-      for (let key in threeStarCategories)
+      rarity = key;
+      currChance += categoryChanceSupport[key];
+      if (pullChance < currChance)
       {
-        rarity = key;
-        currChance += threeStarCategories[key];
-        if (pullChance < currChance)
-        {
-          item = roll(threeStarRates, key)
-          break;
-        }
-      }
-    }
-    else if (i == meguca)
-    {
-      let megucaCategories =  {star2: 8500, star3: 1400, star4: 100};
-      for (let key in megucaCategories)
-      {
-        rarity = key;
-        currChance += megucaCategories[key];
-        if (pullChance < currChance)
-        {
-          item = roll(megucaRates, key)
-          break;
-        }
-      }
-    }
-    else
-    {
-      for (let key in categoryChance)
-      {
-        rarity = key;
-        currChance += categoryChance[key];
-        if (pullChance < currChance)
-        {
-          item = roll(rates, key);
-          break;
-        }
+        item = roll(rates, key);
+        break;
       }
     }
 
     item = decideSpecific(item, rarity);
-    pity++;
-
-    if (rarity == "star4" && item.lastIndexOf("_") == -1 && item.trim() != "Memoria") // 4* girl
-    {
-      pity = 0;
-      fourStar = -1;
-    }
 
     setImage(item, rarity, i);
-    let untilPity = 100 - pity;
-    document.getElementById("gems").innerHTML = "Gems Spent: " + gemsSpent;
-    document.getElementById("pity").innerHTML = "Rolls Until Pity: " + untilPity;
-    document.getElementById("meguca").innerHTML = "";
-    document.getElementById("memoria").innerHTML = "";
-
-    for (key in rares["magical girls"])
-    {
-      document.getElementById("meguca").innerHTML += key + " x" + rares["magical girls"][key] + "<br>";
-    }
+    updateValues();
 
     for (key in rares["memorias"])
     {
       document.getElementById("memoria").innerHTML += key + " x" + rares["memorias"][key] + "<br>";
     }
   }
-
 }
 
 function roll1()
+{
+  if (prevBanner == "support")
+  {
+    roll1Support();
+  }
+  else
+  {
+    for (let i = 0; i < 10; i++)
+    {
+      document.getElementById(i+1).innerHTML = "";
+    }
+    //test
+
+    let rates = allRates[prevBanner];
+    rollsSpent += 1;
+
+    // calculate where pity is
+    // if you get a 4* before then, remove it
+    let fourStar = -1;
+    if (pity == 99)
+    {
+      fourStar = 0;
+    }
+
+    for (let i = 0; i < 1; i++)
+    {
+      let pullChance = (Math.random() * 10000);
+      let currChance = 0;
+      let rarity = 0;
+      let item;
+
+      if (i == fourStar)
+      {
+        rarity = "star4";
+        item = roll(megucaRates, "star4");
+      }
+      else
+      {
+        for (let key in categoryChance)
+        {
+          rarity = key;
+          currChance += categoryChance[key];
+          if (pullChance < currChance)
+          {
+            item = roll(rates, key)
+            break;
+          }
+        }
+      }
+
+      item = decideSpecific(item, rarity);
+      pity++;
+
+      if (rarity == "star4" && item.lastIndexOf("_") == -1 && item.trim() != "Memoria") // 4* girl
+      {
+        pity = 0;
+        fourStar = -1;
+      }
+
+      setImage(item, rarity, i);
+      updateValues();
+
+      for (key in rares["magical girls"])
+      {
+        document.getElementById("meguca").innerHTML += key + " x" + rares["magical girls"][key] + "<br>";
+      }
+
+      for (key in rares["memorias"])
+      {
+        document.getElementById("memoria").innerHTML += key + " x" + rares["memorias"][key] + "<br>";
+      }
+    }
+  }
+}
+
+function roll1Support()
 {
   for (let i = 0; i < 10; i++)
   {
     document.getElementById(i+1).innerHTML = "";
   }
-  //test
 
-  let rates = allRates[prevBanner];
-  gemsSpent += 25;
+  let rates = allRates["support"];
+  rollsSpent += 1;
 
-  // calculate where pity is
-  // if you get a 4* before then, remove it
-  let fourStar = -1;
-  if (pity == 99)
+  let pullChance = (Math.random() * 10000);
+  let currChance = 0;
+  let rarity = 0;
+  let item;
+
+  for (let key in categoryChanceSupport)
   {
-    fourStar = 0;
+    rarity = key;
+    currChance += categoryChanceSupport[key];
+    if (pullChance < currChance)
+    {
+      item = roll(rates, key)
+      break;
+    }
   }
 
-  for (let i = 0; i < 1; i++)
+  //item = decideSpecific(item, rarity);
+
+  setImage(item, rarity, 0);
+  updateValues();
+
+  for (key in rares["memorias"])
   {
-    let pullChance = (Math.random() * 10000);
-    let currChance = 0;
-    let rarity = 0;
-    let item;
-
-    if (i == fourStar)
-    {
-      rarity = "star4";
-      item = roll(megucaRates, "star4");
-    }
-    else
-    {
-      for (let key in categoryChance)
-      {
-        rarity = key;
-        currChance += categoryChance[key];
-        if (pullChance < currChance)
-        {
-          item = roll(rates, key)
-          break;
-        }
-      }
-    }
-
-    item = decideSpecific(item, rarity);
-    pity++;
-
-    if (rarity == "star4" && item.lastIndexOf("_") == -1 && item.trim() != "Memoria") // 4* girl
-    {
-      pity = 0;
-      fourStar = -1;
-    }
-
-    setImage(item, rarity, i);
-    let untilPity = 100 - pity;
-    document.getElementById("gems").innerHTML = "Gems Spent: " + gemsSpent;
-    document.getElementById("pity").innerHTML = "Rolls Until Pity: " + untilPity;
-    document.getElementById("meguca").innerHTML = "";
-    document.getElementById("memoria").innerHTML = "";
-
-    for (key in rares["magical girls"])
-    {
-      document.getElementById("meguca").innerHTML += key + " x" + rares["magical girls"][key] + "<br>";
-    }
-
-    for (key in rares["memorias"])
-    {
-      document.getElementById("memoria").innerHTML += key + " x" + rares["memorias"][key] + "<br>";
-    }
+    document.getElementById("memoria").innerHTML += key + " x" + rares["memorias"][key] + "<br>";
   }
 }
 
 function setImage(item, key, i)
 {
   let color = "";
-  if (item == undefined)
-  {
-    console.log(key);
-    //error occurs for 3 stars
-  }
+
   if (key == "star4")
   {
     if (item.lastIndexOf("_") != -1) // memoria
@@ -365,7 +592,18 @@ function setImage(item, key, i)
 
   let image = getImage(item);
   item = trimMemoria(item);
+  item = trimGem(item);
   document.getElementById(i+1).innerHTML = image + "<div " + color + ">" + item + "<br>";
+}
+
+function trimGem(item)
+{
+  if (item.lastIndexOf("*") != -1) // gem
+  {
+    return item.split("*")[0];
+  }
+
+  return item;
 }
 
 function trimMemoria(item)
@@ -389,6 +627,10 @@ function getImage(item)
   {
     let id = item.split("_")[1];
     return '<img class="pull" src="./assets/Memorias/Memoria_' + id + '_s.png"/>';
+  }
+  else if (item.lastIndexOf("*") != -1) // enhancement gem
+  {
+    return '<img class="pull" src="./assets/Gems/' + trimGem(item) + '.png"/>';
   }
   else
   {
@@ -503,4 +745,33 @@ function sumSubArrays(array){
 function getRandom(min, max)
 {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function updateValues()
+{
+  document.getElementById("rolls").innerHTML = rollsSpent;
+  document.getElementById("pity").innerHTML = pity + "/100";
+  document.getElementById("meguca").innerHTML = "";
+  document.getElementById("memoria").innerHTML = "";
+  if (digitCount(rollsSpent) > oldDigitCount)
+  {
+    oldDigitCount++;
+    rollsLeftSpacer -= 3;
+  }
+  document.getElementById("rolls").style.left = rollsLeftSpacer + "%";
+
+  if (digitCount(pity) == 2)
+  {
+    document.getElementById("pity").style.left = "70%";
+  }
+  else // equal to 1
+  {
+    document.getElementById("pity").style.left = "73%";
+  }
+}
+
+function digitCount(num)
+{
+  if(num === 0 ) return 1
+  return Math.floor(Math.log10(Math.abs(num))) + 1
 }
