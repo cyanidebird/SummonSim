@@ -231,44 +231,47 @@ function bannerChange(current)
                       "star3": {"Magical Girls": {"Total": 400, "Rarity": 0.6}, "Memoria": {"Total": 1200, "Rarity": 0.25}},
                       "star4": {"Magical Girls": {"Total": 100, "Rarity": 0.6}, "Memoria": {"Total": 400, "Rarity": 0.5}}}
                       
-      // calculate odds for rates
-      for (rarity in allRates[current])
+      // calculate odds for rates, skip this step if already filled
+      if (!allRates[current]["star2"]["Memoria"])
       {
-        let numMemoria = 0;
-        let numMegucas = 0;
-        if (rarity != 'JP' && rarity != 'name')
+        for (rarity in allRates[current])
         {
-          for (item in allRates[current][rarity])
+          let numMemoria = 0;
+          let numMegucas = 0;
+          if (rarity != 'JP' && rarity != 'name')
           {
-            isMemoria(item) ? numMemoria++ : numMegucas++;
-          }
-
-          let one4StarMemo = false;
-
-          for (item in allRates[current][rarity])
-          {
-            if (isMemoria(item))
+            for (item in allRates[current][rarity])
             {
-              if (rarity == "star4" && numMemoria == 1)
+              isMemoria(item) ? numMemoria++ : numMegucas++;
+            }
+
+            let one4StarMemo = false;
+
+            for (item in allRates[current][rarity])
+            {
+              if (isMemoria(item))
               {
-                allRates[current][rarity][item] = 150;
-                one4StarMemo = true;
+                if (rarity == "star4" && numMemoria == 1)
+                {
+                  allRates[current][rarity][item] = 150;
+                  one4StarMemo = true;
+                }
+                else
+                {
+                  allRates[current][rarity][item] = generalRates[rarity]["Memoria"]["Total"] * generalRates[rarity]["Memoria"]["Rarity"] / numMemoria;
+                }
               }
               else
               {
-                allRates[current][rarity][item] = generalRates[rarity]["Memoria"]["Total"] * generalRates[rarity]["Memoria"]["Rarity"] / numMemoria;
+                allRates[current][rarity][item] = generalRates[rarity]["Magical Girls"]["Total"] * generalRates[rarity]["Magical Girls"]["Rarity"] / numMegucas;
               }
             }
-            else
-            {
-              allRates[current][rarity][item] = generalRates[rarity]["Magical Girls"]["Total"] * generalRates[rarity]["Magical Girls"]["Rarity"] / numMegucas;
-            }
-          }
 
-          let isThereRateUpMemo = numMemoria == 0 ? 0 : 1;
-          let isThereRateUpMeguca = numMegucas == 0 ? 0 : 1;
-          allRates[current][rarity]["Memoria"] = one4StarMemo ? 250 : generalRates[rarity]["Memoria"]["Total"] -  isThereRateUpMemo * generalRates[rarity]["Memoria"]["Total"] * generalRates[rarity]["Memoria"]["Rarity"];
-          allRates[current][rarity]["Magical Girls"] =  generalRates[rarity]["Magical Girls"]["Total"] -  isThereRateUpMeguca * generalRates[rarity]["Magical Girls"]["Total"] * generalRates[rarity]["Magical Girls"]["Rarity"];
+            let isThereRateUpMemo = numMemoria == 0 ? 0 : 1;
+            let isThereRateUpMeguca = numMegucas == 0 ? 0 : 1;
+            allRates[current][rarity]["Memoria"] = one4StarMemo ? 250 : generalRates[rarity]["Memoria"]["Total"] -  isThereRateUpMemo * generalRates[rarity]["Memoria"]["Total"] * generalRates[rarity]["Memoria"]["Rarity"];
+            allRates[current][rarity]["Magical Girls"] =  generalRates[rarity]["Magical Girls"]["Total"] -  isThereRateUpMeguca * generalRates[rarity]["Magical Girls"]["Total"] * generalRates[rarity]["Magical Girls"]["Rarity"];
+          }
         }
       }
 
@@ -295,8 +298,6 @@ function bannerChange(current)
       }
     }
   }
-
-  console.log(allRates[current]);
 }
 
 function roll10()
@@ -623,6 +624,8 @@ function isMemoria(item)
 
 function getImage(item)
 {
+  console.log(item);
+
   if (item.lastIndexOf("_") != -1) // memoria
   {
     let id = item.split("_")[1];
