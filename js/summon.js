@@ -624,8 +624,7 @@ function isMemoria(item)
 
 function getImage(item)
 {
-  console.log(item);
-
+  
   if (item.lastIndexOf("_") != -1) // memoria
   {
     let id = item.split("_")[1];
