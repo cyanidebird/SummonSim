@@ -115,7 +115,10 @@ var timelineMemo = {
 
         "10/09/2018": {"star2": ["Inherited Bonds_1266"],
                         "star3": ["Popular in the Artisan Ward_1265"],
-                        "star4": ["Garnish Everything Cutely!_1264"]}
+                        "star4": ["Garnish Everything Cutely!_1264"]},
+
+        "11/11/2018": {"star3": ["Never Missing a Scoop_1278"],
+                        "star4": ["Love Kyun-ly Maid-san_1277"]},
 };
 
 var timelineMeguca = {
@@ -187,5 +190,8 @@ var timelineMeguca = {
 
         "06/25/2018": {"star4": ["Kanagi Izumi"]},
 
-        "10/09/2018": {"star4": ["Riko Chiaki"]}
+        "10/09/2018": {"star4": ["Riko Chiaki"]},
+
+        "11/11/2018": {"star4": ["Ikumi Makino"],
+                        "star3": ["Ryo Midori"]},
 };

@@ -94,7 +94,15 @@ allRates["support"] = {
         "A Bit of True Hope_1245": 0,
         "Lethal Weapons Known as Stationery_1257": 0,
         "Hobby, Cap Collection_1258": 0,
-        "Getting Help to Be My Best_1263": 0
+        "Getting Help to Be My Best_1263": 0,
+        "A Hospital Room Shrouded in Darkness_1269": 0,
+        "Two People, Two Dreams_1275": 0,
+        "The Midori Report_1276": 0,
+        "A Snail At Home_1281": 0,
+        "A Class Representative Chosen By God_1282": 0,
+        "Magical Girl VS Series? Round 2_1287": 0,
+        "Mitama's Dream Osechi_1292": 0,
+        "In a Broken World_1299": 0
     },
     star2: {        
     },
@@ -676,5 +684,138 @@ allRates["riko"] = {
     star4:{
         "Garnish Everything Cutely!_1264": 0,
         "Riko Chiaki": 0
+    }
+};
+
+allRates["nagisa"] = {
+    name: "Nagisa Momoe Fate Weave",
+    JP: "10/29/2018",
+    star2: {
+    },
+    star3: {
+        "The Girl Who Came Back_1271": 0,
+        "Bonds of Destiny_1272": 0
+    },
+    star4:{
+        "Nagisa Will Resolve Things!_1270": 0,
+        "Nagisa Momoe": 0
+    }
+};
+
+allRates["ikumi"] = {
+    name: "Ikumi & Ryo Fate Weave",
+    JP: "11/11/2018",
+    star2: {
+    },
+    star3: {
+        "Never Missing a Scoop_1278": 0,
+        "Ryo Midori": 0
+    },
+    star4:{
+        "Love Kyun-ly Maid-san_1277": 0,
+        "Ikumi Makino": 0
+    }
+};
+
+allRates["mayoi"] = {
+    name: "Mayoi Hachikuji Fate Weave",
+    JP: "11/26/2018",
+    star2: {
+    },
+    star3: {
+    },
+    star4:{
+        "Getting Lost Is a Daily Insurance_1285": 0,
+        "Mayoi Hachikuji": 0
+    }
+};
+
+allRates["tsubasa"] = {
+    name: "Tsubasa Hanekawa Fate Weave",
+    JP: "12/03/2018",
+    star2: {
+    },
+    star3: {
+    },
+    star4:{
+        "Overly Fair Taste_1286": 0,
+        "Tsubasa Hanekawa": 0
+    }
+};
+
+allRates["holina"] = {
+    name: "Holy Alina Fate Weave",
+    JP: "12/11/2018",
+    star2: {
+    },
+    star3: {
+        "Memories of Young Miss Santa_1289": 0
+    },
+    star4:{
+        "Christmas Night Magic_1288": 0,
+        "Holy Alina": 0
+    }
+};
+
+allRates["haregitama"] = {
+    name: "The Haregi Chouseiya-san Fate Weave",
+    JP: "01/01/2019",
+    star2: {
+    },
+    star3: {
+        "New Years Party Waitress_1294": 0
+    },
+    star4:{
+        "Food Stall Paradise_1293": 0,
+        "Mitama Yakumo (Haregi ver.)": 0
+    }
+};
+
+allRates["coolmura"] = {
+    name: "Homura Akemi Fate Weave",
+    JP: "01/21/2019",
+    star2: {
+    },
+    star3: {
+        "Hearts, Shared_1301": 0
+    },
+    star4:{
+        "The Price of a Wish_1300": 0,
+        "Homura Akemi": 0
+    }
+};
+
+allRates["valen2_1"] = {
+    name: "A La Carte Valentine 2 Fate Weave Part 1",
+    JP: "02/04/2019",
+    star2: {
+    },
+    star3: {
+        "Mel Anna": 0,
+        "Rika Ayano": 0,
+        "Wonderful Time_1304": 0,
+        "To the Two Who Have Yet to Experience First Love_1305": 0
+    },
+    star4:{
+        "Sweet Apportionment_1303": 0,
+        "Riko Chiaki": 0,
+        "Kyoko Sakura": 0
+    }
+};
+
+allRates["valen2_2"] = {
+    name: "A La Carte Valentine 2 Fate Weave Part 2",
+    JP: "02/08/2019",
+    star2: {
+    },
+    star3: {
+        "Kaede Akino": 0,
+        "Wonderful Time_1304": 0,
+        "To the Two Who Have Yet to Experience First Love_1305": 0
+    },
+    star4:{
+        "Sweet Apportionment_1303": 0,
+        "Kanagi Izumi": 0,
+        "Mami Tomoe": 0
     }
 };
